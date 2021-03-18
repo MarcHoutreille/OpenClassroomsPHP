@@ -9,6 +9,7 @@
 <body>
     <?php /* insérer du code PHP ici */
     $age = 45;
+    phpinfo();
 
 switch($age) {
     case 45:
