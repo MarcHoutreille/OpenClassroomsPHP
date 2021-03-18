@@ -1,4 +1,7 @@
+<?php
+include("navbar.php");
 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,25 +16,27 @@
 </head>
 <style>
 form {
-    padding-top:25px;
+    margin:10px;
+    text-align:left;
 }
 
 
 body {
-text-align: center; 
+    color:white;
+    background-color:#444;
 }
 .chat {
-    padding-top: 10px;
+    text-align: left; 
+    margin:10px;
+    padding:7px;
+    background-color:#222;
+    color:orange;
 }
 
 </style>
 <body>
-    <form action="memberschat_post.php" method="post">
-        <p><label for="message">Message : <input type="text" name="message"></label></p>
 
-        <input type="submit" value="Go!" />
-    </form>
-<section class="chat bg-secondary rounded">
+<section class="chat  rounded">
 <?php
 
 
@@ -41,13 +46,20 @@ try {
     die('Erreur');
 }
 
-$response = $db->query('SELECT * FROM minichat');
+$response = $db->query('SELECT * FROM (SELECT * FROM minichat ORDER BY id DESC LIMIT 10) sub ORDER BY id ASC');
 while ($data = $response->fetch()) {
-    echo '<p>' . $data['pseudo'] . ' : ' . $data['message'] . '</p>';
+    echo '<p>' . "<span style='font-size:8px' > (" . $data['date_msg'] . " )</span> "  . htmlspecialchars($data['pseudo']) . ' : ' . htmlspecialchars($data['message']) . '</p>';
 }
+
 
 ?>
 </section>
+
+<form action="memberschat_post.php" method="post">
+        <p><label for="message">Message : <input type="text" name="message"></label></p>
+
+        <input type="submit" value="Go!" />
+    </form>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 

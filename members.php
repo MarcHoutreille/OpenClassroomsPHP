@@ -13,6 +13,22 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="width:100%">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><!-- branding here --></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link " aria-current="page" href="inscription.php">Home</a>
+                    <a class="nav-link active " href="members.php">Chat</a>
+                    <a class="nav-link disabled" href="#">Coming soon</a>
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Coming soon</a>
+                </div>
+            </div>
+        </div>
+    </nav>
     <div class="container">
         <div class="row">
             <div class="col">
@@ -22,7 +38,7 @@
                     // connexion à la bdd
                     $db = new PDO('mysql:host=localhost;dbname=test', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
-                    if (!empty($_POST['nickname']) & !empty($_POST['password'])) {
+                    if (((isset($_COOKIE['nickname'])) & (isset($_POST['password'])) ) | !empty($_POST['nickname']) & !empty($_POST['password']) )  {
                         //  Récupération de l'utilisateur et de son pass hashé
 
                         $nickname = $_POST['nickname'];
@@ -39,19 +55,22 @@
                             echo $resultat;
                             echo '<p> Mauvais identifiants !</p>';
                         } else {
+                            
                             if ($isPasswordCorrect) {
                                 session_start();
                                 $_SESSION['id'] = $resultat['id'];
                                 $_SESSION['nickname'] = $nickname;
+                                /* creation des cookies */
+                                setcookie('nickname', $nickname, time() + 365*24*3600, null, null, false, true);
+                                setcookie('password', password_hash($password, PASSWORD_DEFAULT), time() + 365*24*3600, null, null, false, true);
 
 
 
                                 if (isset($_SESSION['id']) and isset($_SESSION['nickname'])) {
-                                    include("navbar.php");
+                                    
                                     echo '<h1> Bonjour ' . $_SESSION['nickname'] . "</h1>";
                                     echo 'Vous êtes connecté';
                                     include("memberschat.php");
-
                                 }
                             } else {
 

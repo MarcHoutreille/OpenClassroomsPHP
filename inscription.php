@@ -1,3 +1,7 @@
+<?php 
+include("navbar.php")
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +19,7 @@
 
 <body style="background-color:lightgrey;">
     <header>
-        <p>Hello !</p>
+        
     </header>
     <div class="container">
         <div class="row">
