@@ -1,0 +1,50 @@
+body *{
+    font-family: 'Major Mono Display', monospace;
+}
+
+
+.bg-1 {
+    background-color: orange;
+}
+
+.orange {
+    color: orange;
+}
+
+
+
+a {
+    color:orange;
+text-decoration:none
+}
+
+a:active {
+    color:rgb(253, 186, 60);
+}
+
+a:hover {
+    color:rgb(221, 145, 3);
+text-decoration:none
+}
+
+.monotext {
+    font-family: 'Major Mono Display', monospace;
+}
+
+.loginbox,.signupbox{
+    transition: display 0s, opacity 0.5s linear;
+    transition: all 333ms ease-out;
+}
+
+input {
+
+    background-color:grey;
+    color:orange;
+    border: none;
+    outline: none;
+}
+
+input[type="text"]
+{
+    font-family: 'PT Mono', monospace;
+}
