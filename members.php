@@ -36,7 +36,7 @@
 
                 try {
                     // connexion à la bdd
-                    $db = new PDO('mysql:host=localhost;dbname=test', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+                    $db = new PDO('mysql:host=localhost;dbname=test', 'root', 'YbZbgfEnjB*aMK4Q', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
                     if (((isset($_COOKIE['nickname'])) & (isset($_POST['password'])) ) | !empty($_POST['nickname']) & !empty($_POST['password']) )  {
                         //  Récupération de l'utilisateur et de son pass hashé

@@ -1,0 +1,43 @@
+<html>
+
+<head>
+  <title>Example form</title>
+</head>
+<style>
+    
+
+.container {
+  width: 500px;
+  clear: both;
+}
+
+.container input {
+  width: 100%;
+  clear: both;
+}
+</style>
+<body>
+  <div class="container">
+    <form>
+      <label>First Name
+      <input type="text" name="first"></label><br />
+      <label>Last Name</label>
+      <input type="text" name="last"><br />
+      <label>Email</label>
+      <input type="text" name="email"><br />
+    </form>
+  </div>
+</body>
+<form name="myform" action="handle-data.php" method="post">
+  <label for="query">Search:</label>
+  <input type="text" name="query" id="query"/>
+  <button>Search</button>
+</form>
+
+<script>
+var button = document.querySelector('form[name="myform"] > button');
+button.addEventListener(function() {
+  document.querySelector("form[name="myform"]").submit();
+});
+</script>
+</html>

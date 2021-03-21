@@ -1,4 +1,4 @@
-<?php 
+<?php
 include("navbar.php")
 ?>
 
@@ -14,50 +14,56 @@ include("navbar.php")
     <title>Login page</title>
 </head>
 <style>
+    .bg-1 {
+        background-color: orange;
+    }
 
+    .orange {
+        color: orange;
+    }
 </style>
 
-<body style="background-color:lightgrey;">
+<body class="bg-secondary">
     <header>
-        
+
     </header>
     <div class="container">
         <div class="row">
             <!-- formulaire d'INSCRIPTION -->
-            <div class="col-3 offset-3 p-5 ">
-                <h2> Sign up </h2>
-                <div class="formulaire bg-secondary p-2 rounded shadow-lg" style="width:100%">
+            <div class="col col-md-4 pt-2 offset-2 p-5 ">
+                <h2 class="text-center"> Sign up </h2>
+                <div class="formulaire  bg-dark orange  p-2 rounded  shadow-lg" style="width:100%">
                     <form action="inscription.php" method="post">
                         <p><label for="nickname" class="fw-bold">Nickname : <input type="text" name="nickname"></label></p>
                         <p><label for="email" class="fw-bold">E-mail : <input type="text" name="email"></label></p>
                         <p><label for="password" class="fw-bold">Password : <input type="password" name="password"></label></p>
 
-                        <input type="submit" value="Sign up" />
+                        <input class="btn orange" type="submit" value="Sign up" />
                     </form>
                 </div>
             </div>
 
             <!-- formulaire de LOG IN -->
-            <div class="col-3 p-5 ">
-                <h2> Log in </h2>
-                <div class="formulaire bg-secondary p-2 rounded shadow-lg" style="width:100%">
+            <div class="col col-md-4 p-5 ">
+                <h2 class="text-center"> Log in </h2>
+                <div class="formulaire p-2 pt-2 rounded bg-dark orange shadow-lg" style="width:100%">
                     <form action="members.php" method="post">
 
                         <p><label for="nickname" class="fw-bold">Nickname : <input type="text" name="nickname"></label></p>
                         <p><label for="password" class="fw-bold">Password : <input type="password" name="password"></label></p>
 
-                        <input type="submit" value="Log in" />
+                        <input class="btn orange" type="submit" value="Log in" />
                     </form>
                 </div>
             </div>
 
         </div>
         <div class="row">
-            <div class="col-5 offset-3 p-5">
+            <div class="col col-md-5 offset-3 p-5">
                 <?php
 
                 try {
-                    $db = new PDO('mysql:host=localhost;dbname=test', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+                    $db = new PDO('mysql:host=localhost;dbname=test', 'root', 'YbZbgfEnjB*aMK4Q', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
                 } catch (Exception $e) /* error handling */ {
                     die('Erreur');
                 }

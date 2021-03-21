@@ -1,5 +1,6 @@
-body *{
+main {
     font-family: 'Major Mono Display', monospace;
+    color: orange;
 }
 
 
@@ -27,9 +28,23 @@ a:hover {
 text-decoration:none
 }
 
-.monotext {
+.monotext-2
+{
     font-family: 'Major Mono Display', monospace;
 }
+
+.monotext:hover {
+    color:rgb(226, 174, 61);
+    font-family: 'Major Mono Display', monospace;
+    text-shadow: 0 1px;
+}
+
+.monotext:active {
+    color:rgb(216, 216, 216);
+    font-family: 'Major Mono Display', monospace;
+    text-shadow: 0 1px;
+}
+
 
 .loginbox,.signupbox{
     transition: display 0s, opacity 0.5s linear;
@@ -38,7 +53,7 @@ text-decoration:none
 
 input {
 
-    background-color:grey;
+    background-color:rgb(85, 85, 85);
     color:orange;
     border: none;
     outline: none;
@@ -47,4 +62,52 @@ input {
 input[type="text"]
 {
     font-family: 'PT Mono', monospace;
+}input[type="password"]
+{
+    font-family: 'PT Mono', monospace;
 }
+
+.chat {
+    font-family: 'PT Mono', monospace;
+    width:800px;
+    font-size:10px;
+    text-align: left;
+    margin: 10px;
+    padding: 7px;
+    background-color: #222;
+    color: orange;
+}
+
+.chattext {
+    font-family: 'VT323', monospace;
+}
+
+.chatsend {
+    padding-left:10px;
+}
+
+.navbar a::after{
+    color:orange;
+}
+
+.footer {
+    position:fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: orange;
+    text-align: center;
+    font-size:12px;
+  }
+
+  
+  .blurry-text {
+    color: transparent;
+    text-shadow: 0 0 10px rgba(253, 165, 0, 0.5);
+ }
+
+ 
+ .blurry-text:hover {
+    color: transparent;
+    text-shadow: 0 0 0px orange;
+ }

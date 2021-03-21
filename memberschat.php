@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,47 +10,52 @@
 
 </head>
 <style>
-form {
-    margin:10px;
-    text-align:left;
-}
+    form {
+        margin: 10px;
+        text-align: left;
+    }
 
 
-body {
-    color:white;
-    background-color:#444;
-}
-.chat {
-    text-align: left; 
-    margin:10px;
-    padding:7px;
-    background-color:#222;
-    color:orange;
-}
+    body {
+        color: white;
+        background-color: #444;
+    }
 
+    .chat {
+        text-align: left;
+        margin: 10px;
+        padding: 7px;
+        background-color: #222;
+        color: orange;
+    }
 </style>
+
 <body>
 
-<section class="chat  rounded">
-<?php
+    <section class="chat  rounded">
+        <?php
 
 
-try {
-    $db = new PDO('mysql:host=localhost;dbname=test', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-} catch (Exception $e) /* error handling */ {
-    die('Erreur');
-}
+        try {
+            $db = new PDO('mysql:host=localhost;dbname=test', 'root', 'YbZbgfEnjB*aMK4Q', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        } catch (Exception $e) /* error handling */ {
+            die('Erreur');
+        }
 
-$response = $db->query('SELECT * FROM (SELECT * FROM minichat ORDER BY id DESC LIMIT 10) sub ORDER BY id ASC');
-while ($data = $response->fetch()) {
-    echo '<p>' . "<span style='font-size:8px' > (" . $data['date_msg'] . " )</span> "  . htmlspecialchars($data['pseudo']) . ' : ' . htmlspecialchars($data['message']) . '</p>';
-}
+        if (isset($_COOKIE['nickname'])) {
+            $response = $db->query('SELECT * FROM (SELECT * FROM minichat ORDER BY id DESC LIMIT 10) sub ORDER BY id ASC');
+            while ($data = $response->fetch()) {
+                echo '<p>' . "<span style='font-size:8px' > (" . $data['date_msg'] . " )</span> "  . htmlspecialchars($data['pseudo']) . ' : ' . htmlspecialchars($data['message']) . '</p>';
+            }
+        } else {
+            echo "Erreur.";
+        }
 
 
-?>
-</section>
+        ?>
+    </section>
 
-<form action="memberschat_post.php" method="post">
+    <form action="memberschat_post.php" method="post">
         <p><label for="message">Message : <input type="text" name="message"></label></p>
 
         <input type="submit" value="Go!" />
