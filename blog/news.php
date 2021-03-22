@@ -46,22 +46,22 @@ try {
                 // echo '<img src="https://placeimg.com/300/200/tech" class="card-img-top" alt="...">';
                 echo  '<div class="card-body">'
                 ?> 
-
+                <!-- READ ARTICLE BUTTON -->
                 <form method="get" action="news_read.php">
-                
-                <input type="submit" class="chattext bg-dark" value="<?php echo $data['title']?>" name ="article"> </input>
+                <input type="submit" class="chattext" style="font-size:24px; background-color:#222;" value="<?php echo $data['title']?>" name ="article"> </input>
                 </form>
 
                 
                 <?php 
-                echo '<h5 class="card-title">' .  $data['title'] .'</h5></input>';
+                //echo '<h5 class="card-title">' .  $data['title'] .'</h5></input>';
                 echo  '<p class="card-text" style="width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">' . $data['content'] . "</p>";
 
 
                 if (($_COOKIE['nickname'] == 'admin') && ($_COOKIE['password'] == "88qhYmCQgmK7g")) {
 
                     echo '<form action="news_delete.php" method="get">';
-                    echo '<input type="submit" name="id" value=' . $data['id'] . '></form>';
+                    echo '<input type="hidden" name="id" value=" ' . $data['id'] .'  ">';
+                    echo '<input type="submit" style="font-size:14px; background-color:#222; color:red;"  class="chattext" value="//delete article"></form>';
                 }
                 echo '</div></div>';
             }

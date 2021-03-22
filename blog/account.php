@@ -35,20 +35,31 @@ if (isset($_COOKIE['nickname'])) {
     /* store the username to use it in an SQL query */
     $nickname = $_COOKIE['nickname'];
     /* query the databse to get the user's email */
-    $response = $db->query("SELECT email,nickname FROM membres WHERE nickname ='$nickname' ");
+    $response = $db->query("SELECT email,nickname,is_admin FROM membres WHERE nickname ='$nickname' ");
     while ($data = $response->fetch()) {
 
 
 
         echo "<div style='padding-top:10%' class='justify-content-center  d-flex m-5'>";
 
-        echo "<div class='mx-1 me-2  monotext-2 text-start'>username </br> email </br> password </br> confirm </br></div>";
+        echo "<div class='mx-1 me-2  monotext-2 text-start'>username </br> email </br> password </br> confirm </br>color </br> role </br>  </div>";
         echo "<div class='text-center chattext'>" .  $data['nickname'] ;
         echo "<div class='text-center'>" .  "<span class='blurry-text'>" . $data['email'] . "</span>";
+        
 
         echo "<div> <form method='POST' action='account.php'> <input style='height:17px;' type='password' name='password' />";
+        
         echo "<div> <input style='height:17px;' type='password' name='confirm' />";
+        echo "<div ><input style='height:12px' name='color' type='color'/>" ;
+        if ($data['is_admin'] == 1) {
+            echo "<div>" . "admin";
+        } else {
+            echo "<div>" . "user";
+        }
+        
         echo "<div> <input class='bg-dark chattext my-2 py-1' type='submit' value='//change password' />";
+        
+        
         /*
         echo "username : <input type='text' style='width:90px' name='username' value='" . $_COOKIE['nickname'] . "'</input></br>";
 
@@ -56,7 +67,7 @@ if (isset($_COOKIE['nickname'])) {
         echo "password : <input type='password' style='width:90px' name='password' value='" . "'</input></br>";
         echo "confirm  : <input type='password' style='width:90px' name='password' value='" . "'</input></br>"; 
         */
-        echo "</div>";
+        echo "</form></div>";
 
 
     }

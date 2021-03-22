@@ -8,6 +8,10 @@ main {
     background-color: orange;
 }
 
+.bg-2 {
+    background-color:black;
+}
+
 .orange {
     color: orange;
 }
@@ -81,6 +85,12 @@ input[type="text"]
 .chattext {
     font-family: 'VT323', monospace;
 }
+
+.chattext {
+    font-family: 'VT323', monospace;
+    background-color: #222;
+}
+
 
 .chatsend {
     padding-left:10px;

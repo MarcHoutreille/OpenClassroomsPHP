@@ -5,6 +5,10 @@ try {
 } catch (Exception $e) /* error handling */ {
     die('Erreur');
 }
+if (isset($_POST['color'])) {
+    echo $_POST['color'];
+}
+
 if(!empty($_POST['password']) && (!empty($_POST['confirm'])) && ($_POST['password'] == $_POST['confirm'])) {
     $nickname = $_COOKIE['nickname'];
     $response = $db->query("SELECT email,nickname FROM membres WHERE nickname ='$nickname' ");

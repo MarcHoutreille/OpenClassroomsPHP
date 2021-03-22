@@ -5,7 +5,7 @@ try {
     die('Erreur');
 }
 $articleToedit = $_POST['id'];
-$editedArticle = nl2br($_POST['editedarticle']);
+$editedArticle = addslashes($_POST['editedarticle']);
 echo $articleToedit;
 echo $editedArticle;
 

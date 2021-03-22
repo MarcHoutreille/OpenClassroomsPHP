@@ -13,7 +13,7 @@ try {
     if (((isset($_COOKIE['nickname'])) & (isset($_POST['password']))) | !empty($_POST['nickname']) & !empty($_POST['password'])) {
         //  Récupération de l'utilisateur et de son pass hashé
 
-        $nickname = $_POST['nickname'];
+        $nickname = strtolower($_POST['nickname']);
         $password = $_POST['password'];
         $req = $db->prepare('SELECT id, pass FROM membres WHERE nickname = :nickname');
         $req->execute(array('nickname' => $nickname));
