@@ -25,8 +25,10 @@ while ($data = $req->fetch()) {
             // EDITION FORM
             echo "<button class='btn chattext orange' id='modify'> //edit </button>";
             echo '</div>';
+            
             echo '<form method="post" action="news_edit.php" id="modifyarea" class="chat d-none" style="">';
-            echo '<input type="text" style="font-size:24px" name="title" value= ' . $data['title'] . '></input>';
+            echo '<h3>'. $data['title'] .'</h3>';
+            // echo '<input type="text" style="font-size:24px" name="title" value= ' . $data['title'] . '></input>';
             echo '<input type="hidden" name="id" value= ' . $data['id'] . '></input>';
             echo '<textarea autocorrect="off" rows="40" cols="90" class="chat " name="editedarticle">' .  $data['content'] . '</textarea>';
             echo '<input type="submit">';

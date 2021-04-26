@@ -9,17 +9,17 @@ try {
 }
 /* check si l'utilisateur a bien rentré ses infos */
 
-if (empty($_POST['nickname']) | empty($_POST['email']) | empty($_POST['password'])) {
+if (empty($_POST['username']) | empty($_POST['email']) | empty($_POST['password'])) {
     echo "<div style='padding-top:17%' class='text-center'> please enter valid info</br>";
     echo "<a href='index.php'>back to login </a></div>";
 } else {
-    $reqNickfromDB = $db->query('SELECT nickname FROM membres WHERE nickname ="' . $_POST['nickname'] . '"');
+    $reqNickfromDB = $db->query('SELECT username FROM membres WHERE username ="' . $_POST['username'] . '"');
     $nickData = $reqNickfromDB->fetch();
 
     $reqEmailfromDB = $db->query('SELECT email FROM membres WHERE email ="' . $_POST['email'] . '"');
     $emailData = $reqEmailfromDB->fetch();
 
-    if (strtolower($_POST['nickname']) == strtolower($nickData[0]) | strtolower($_POST['email']) == strtolower($emailData[0])) {
+    if (strtolower($_POST['username']) == strtolower($nickData[0]) | strtolower($_POST['email']) == strtolower($emailData[0])) {
         echo "<div style='padding-top:17%' class='text-center'>this username already exists</br>";
         echo "<a href='index.php'>back to login </a></div>";
 
@@ -28,21 +28,21 @@ if (empty($_POST['nickname']) | empty($_POST['email']) | empty($_POST['password'
         echo "<div style='padding-top:17%' class='text-center'>please enter a valid email</br>";
         echo "<a href='index.php'>back to login </a></div>";
         /* is the username only alphanumeric ? */
-    } else if (!preg_match("#^[a-zA-Z-' ]*$#", $_POST['nickname'])) {
+    } else if (!preg_match("#^[a-zA-Z-' ]*$#", $_POST['username'])) {
         echo "<div style='padding-top:17%' class='text-center'>please enter a valid username</br>";
         echo "<a href='index.php'>back to login </a></div>";
     } else if (($_POST['password'] != $_POST['confirm'])) {
         echo "<div style='padding-top:17%' class='text-center'>passwords don't match !</br>";
         echo "<a href='index.php'>back to login </a></div>";
     } else {
-        $username = htmlspecialchars($_POST['nickname']);
+        $username = htmlspecialchars($_POST['username']);
         $usermail = htmlspecialchars($_POST['email']);
         $userpassword = password_hash(htmlspecialchars($_POST["password"]), PASSWORD_DEFAULT);
         /* On assigne chacune des valeurs définies au dessus dans la base de donnée */
-        $req = $db->prepare('INSERT INTO membres(nickname, pass, email, date_inscription) VALUES(:nickname, :pass, :email, CURDATE())');
+        $req = $db->prepare('INSERT INTO membres(username, password, email, date_inscription) VALUES(:username, :password, :email, CURDATE())');
         $req->execute(array(
-            'nickname' => $username,
-            'pass' => $userpassword,
+            'username' => $username,
+            'password' => $userpassword,
             'email' => $usermail
 
         ));

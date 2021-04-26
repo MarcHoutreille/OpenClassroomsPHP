@@ -86,10 +86,6 @@ input[type="text"]
     font-family: 'VT323', monospace;
 }
 
-.chattext {
-    font-family: 'VT323', monospace;
-    background-color: #222;
-}
 
 
 .chatsend {
