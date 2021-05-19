@@ -4,4 +4,4 @@
 
 It's not perfect but it's made from scratch
 
-![alt text]("/welcome.png")
+![alt text]("https://github.com/MarcHoutreille/TheSocialJimwork/blob/main/welcome.png" "Teaser Image")
