@@ -4,4 +4,4 @@
 
 It's not perfect but it's made from scratch
 
-![alt text]("welcome.png")
+![alt text]("/welcome.png")
